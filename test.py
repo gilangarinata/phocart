@@ -7,12 +7,12 @@ import argparse
 from utils import Preprocess
 
 
-parser = argparse.ArgumentParser()
-parser.add_argument('--photo_path', type=str, help='input photo path')
-parser.add_argument('--save_path', type=str, help='cartoon save path')
-args = parser.parse_args()
+# parser = argparse.ArgumentParser()
+# parser.add_argument('--photo_path', type=str, help='input photo path')
+# parser.add_argument('--save_path', type=str, help='cartoon save path')
+# args = parser.parse_args()
 
-os.makedirs(os.path.dirname(args.save_path), exist_ok=True)
+# os.makedirs(os.path.dirname(args.save_path), exist_ok=True)
 
 class Photo2Cartoon:
     def __init__(self):
@@ -54,10 +54,10 @@ class Photo2Cartoon:
         return cartoon
 
 
-if __name__ == '__main__':
-    img = cv2.cvtColor(cv2.imread(args.photo_path), cv2.COLOR_BGR2RGB)
-    c2p = Photo2Cartoon()
-    cartoon = c2p.inference(img)
-    if cartoon is not None:
-        cv2.imwrite(args.save_path, cartoon)
-        print('Cartoon portrait has been saved successfully!')
+# if __name__ == '__main__':
+    # img = cv2.cvtColor(cv2.imread(args.photo_path), cv2.COLOR_BGR2RGB)
+    # c2p = Photo2Cartoon()
+    # cartoon = c2p.inference(img)
+    # if cartoon is not None:
+    #     cv2.imwrite(args.save_path, cartoon)
+    #     print('success')

@@ -29,23 +29,23 @@ class Photo2Cartoon:
             return None
         
         print('[Step2: face detect] success!')
-        face_rgba = cv2.resize(face_rgba, (256, 256), interpolation=cv2.INTER_AREA)
-        face = face_rgba[:, :, :3].copy()
-        mask = face_rgba[:, :, 3][:, :, np.newaxis].copy() / 255.
-        face = (face*mask + (1-mask)*255) / 127.5 - 1
+        # face_rgba = cv2.resize(face_rgba, (256, 256), interpolation=cv2.INTER_AREA)
+        # face = face_rgba[:, :, :3].copy()
+        # mask = face_rgba[:, :, 3][:, :, np.newaxis].copy() / 255.
+        # face = (face*mask + (1-mask)*255) / 127.5 - 1
 
-        face = np.transpose(face[np.newaxis, :, :, :], (0, 3, 1, 2)).astype(np.float32)
+        # face = np.transpose(face[np.newaxis, :, :, :], (0, 3, 1, 2)).astype(np.float32)
 
-        # inference
-        cartoon = self.session.run(['output'], input_feed={'input':face})
+        # # inference
+        # cartoon = self.session.run(['output'], input_feed={'input':face})
 
-        # post-process
-        cartoon = np.transpose(cartoon[0][0], (1, 2, 0))
-        cartoon = (cartoon + 1) * 127.5
-        cartoon = (cartoon * mask + 255 * (1 - mask)).astype(np.uint8)
-        cartoon = cv2.cvtColor(cartoon, cv2.COLOR_RGB2BGR)
-        print('[Step3: photo to cartoon] success!')
-        return cartoon
+        # # post-process
+        # cartoon = np.transpose(cartoon[0][0], (1, 2, 0))
+        # cartoon = (cartoon + 1) * 127.5
+        # cartoon = (cartoon * mask + 255 * (1 - mask)).astype(np.uint8)
+        # cartoon = cv2.cvtColor(cartoon, cv2.COLOR_RGB2BGR)
+        # print('[Step3: photo to cartoon] success!')
+        # return cartoon
 
 
 if __name__ == '__main__':
