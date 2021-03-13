@@ -24,7 +24,7 @@ def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-@app.route('/', methods=['POST','GET'])
+@app.route('/process', methods=['POST','GET'])
 def upload_file():
     if request.method == 'POST':
         if 'file' not in request.files:
