@@ -30,13 +30,15 @@ def upload_file():
         if 'file' not in request.files:
             return {
                 "code" : 1210,
-                "message" : "No file part" 
+                "message" : "No file part" ,
+                "path" : None
             }
         file = request.files['file']
         if file.filename == '':
             return {
                 "code" : 1211,
-                "message" : "no selected file" 
+                "message" : "no selected file",
+                "path" : None 
             }
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
@@ -53,7 +55,8 @@ def upload_file():
                 }
             return {
                 "code" : 1212,
-                "message" : "No face detected."
+                "message" : "No face detected.",
+                "path" : None
             }
 
 
