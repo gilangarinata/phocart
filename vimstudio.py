@@ -10,6 +10,7 @@ from utils import Preprocess
 import onnxruntime
 from PIL import Image
 from rembg.bg import remove
+import io
 
 
 UPLOAD_FOLDER = './imageuploads'
