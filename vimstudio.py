@@ -55,12 +55,12 @@ def upload_file():
                 cv2.imwrite(path, cartoon)
                 f = np.fromfile(path)
                 result = remove(f)
-                img = Image.open(io.BytesIO(result))
-                img.save("./images/" + "final" +filename)
+                img = Image.open(io.BytesIO(result)).convert("RGBA")
+                img.save("./images/" + "final" +filename + ".png")
                 return {
                     "code" : 2000,
                     "message" : "success",
-                    "path" : request.base_url.replace("process","") + "uploads/" + "final" +filename
+                    "path" : request.base_url.replace("process","") + "uploads/" + "final" +filename + ".png"
                 }
             return {
                 "code" : 1212,
