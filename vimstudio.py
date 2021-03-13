@@ -35,7 +35,7 @@ def upload_file():
         file = request.files['file']
         if file.filename == '':
             return {
-                "code" : 1211
+                "code" : 1211,
                 "message" : "no selected file" 
             }
         if file and allowed_file(file.filename):
@@ -47,12 +47,12 @@ def upload_file():
             if cartoon is not None:
                 cv2.imwrite("./images/" + filename, cartoon)
                 return {
-                    "code" : 2000
+                    "code" : 2000,
                     "message" : "success",
                     "path" : request.base_url + "uploads/" + filename
                 }
             return {
-                "code" : 1212
+                "code" : 1212,
                 "message" : "No face detected."
             }
 
