@@ -29,7 +29,7 @@ def upload_file():
     if request.method == 'POST':
         if 'file' not in request.files:
             return {
-                "code" : 1210
+                "code" : 1210,
                 "message" : "No file part" 
             }
         file = request.files['file']
