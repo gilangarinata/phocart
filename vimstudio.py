@@ -28,10 +28,16 @@ def allowed_file(filename):
 def upload_file():
     if request.method == 'POST':
         if 'file' not in request.files:
-            return {"message" : "No file part" }
+            return {
+                "code" : 1210
+                "message" : "No file part" 
+            }
         file = request.files['file']
         if file.filename == '':
-            return {"message" : "no selected file" }
+            return {
+                "code" : 1211
+                "message" : "no selected file" 
+            }
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
@@ -41,11 +47,13 @@ def upload_file():
             if cartoon is not None:
                 cv2.imwrite("./images/" + filename, cartoon)
                 return {
+                    "code" : 2000
                     "message" : "success",
                     "path" : request.base_url + "uploads/" + filename
                 }
             return {
-                "message" : "failed"
+                "code" : 1212
+                "message" : "No face detected."
             }
 
 
