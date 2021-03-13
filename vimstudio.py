@@ -51,7 +51,7 @@ def upload_file():
                 return {
                     "code" : 2000,
                     "message" : "success",
-                    "path" : request.base_url + "uploads/" + filename
+                    "path" : request.base_url.replace("process","") + "uploads/" + filename
                 }
             return {
                 "code" : 1212,
