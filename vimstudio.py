@@ -56,11 +56,11 @@ def upload_file():
                 f = np.fromfile(path)
                 result = remove(f)
                 img = Image.open(io.BytesIO(result)).convert("RGBA")
-                img.save(path)
+                img.save("./images/" + "final" +filename)
                 return {
                     "code" : 2000,
                     "message" : "success",
-                    "path" : request.base_url.replace("process","") + "uploads/" + filename
+                    "path" : request.base_url.replace("process","") + "uploads/" + "final" +filename
                 }
             return {
                 "code" : 1212,
