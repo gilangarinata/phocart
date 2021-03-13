@@ -89,3 +89,6 @@ class Photo2CartoonOnxx:
         cartoon = cv2.cvtColor(cartoon, cv2.COLOR_RGB2BGR)
         print('[Step3: photo to cartoon] success!')
         return cartoon
+
+if __name__ == '__main__':
+    app.run(host='127.0.0.1')
