@@ -8,6 +8,9 @@ from models import ResnetGenerator
 import argparse
 from utils import Preprocess
 import onnxruntime
+from PIL import Image
+from rembg.bg import remove
+
 
 UPLOAD_FOLDER = './imageuploads'
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
@@ -47,7 +50,12 @@ def upload_file():
             c2p = Photo2CartoonOnxx()
             cartoon = c2p.inference(img)
             if cartoon is not None:
-                cv2.imwrite("./images/" + filename, cartoon)
+                path = "./images/" + filename
+                cv2.imwrite(path, cartoon)
+                f = np.fromfile(path)
+                result = remove(f)
+                img = Image.open(io.BytesIO(result)).convert("RGBA")
+                img.save(path)
                 return {
                     "code" : 2000,
                     "message" : "success",
