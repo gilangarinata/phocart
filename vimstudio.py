@@ -55,7 +55,7 @@ def upload_file():
                 cv2.imwrite(path, cartoon)
                 f = np.fromfile(path)
                 result = remove(f)
-                img = Image.open(io.BytesIO(result)).convert("RGBA")
+                img = Image.open(io.BytesIO(result))
                 img.save("./images/" + "final" +filename)
                 return {
                     "code" : 2000,
